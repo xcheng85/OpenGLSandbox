@@ -1,0 +1,24 @@
+{
+    "version": "2.0.0",
+    "command": "build",
+    "options": {
+        "cwd": "${workspaceRoot}/build"
+    },
+    "tasks": [
+        {
+            "label": "cmake",
+            "type": "shell",
+            "command": "cmake -G 'MinGW Makefiles' -DCMAKE_BUILD_TYPE=Debug .." g
+        },
+        {
+            "label": "build",
+            "type": "shell",
+            "command": "mingw32-make -j 8",
+            "group":{
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher":"$gcc"     
+        }
+    ]
+}
