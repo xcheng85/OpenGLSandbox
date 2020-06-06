@@ -2,15 +2,15 @@
 #include <vector>
 #include <string>
 
+#include <memory>
+
+#include <Application.h>
+
 using namespace std;
+using namespace OpenGLSandbox::Common;
 
 int main()
 {
-    vector<string> msg {"Hello", "C++", "World", "from", "VS Code", "and the C++ extension!"};
-
-    for (const string& word : msg)
-    {
-        cout << word << " ";
-    }
-    cout << endl;
+    std::unique_ptr<Application> app = std::make_unique<Application>();
+    app->run();
 }

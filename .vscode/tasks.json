@@ -8,7 +8,7 @@
         {
             "label": "cmake",
             "type": "shell",
-            "command": "cmake -G 'MinGW Makefiles' -DCMAKE_BUILD_TYPE=Debug .." g
+            "command": "cmake -G 'MinGW Makefiles' -DCMAKE_BUILD_TYPE=Debug .." 
         },
         {
             "label": "build",
