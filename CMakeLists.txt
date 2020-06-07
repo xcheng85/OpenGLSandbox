@@ -16,6 +16,8 @@ add_executable(${PROJECT_NAME}
   src/main.cpp
   common/Application.h 
   common/Application.cpp
+  src/MCApplication.h
+  src/MCApplication.cpp
 )
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)
 target_compile_options(${PROJECT_NAME} PRIVATE -Wall)

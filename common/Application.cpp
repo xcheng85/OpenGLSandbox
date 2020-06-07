@@ -35,6 +35,8 @@ Application::Application(unsigned int width, unsigned int height, std::string ti
     }
 
     glfwSetKeyCallback(window_, key_callback);
+    glfwSetWindowSizeCallback(window_, resize_callback);
+    glfwSetWindowFocusCallback(window_, focus_callback);
 
     glfwMakeContextCurrent(window_);
 
@@ -84,5 +86,13 @@ void Application::key_callback(GLFWwindow *window, int key, int scancode, int ac
 
 void Application::resize_callback(GLFWwindow *window, int newWidth, int newHeight)
 {
+}
 
+void Application::focus_callback(GLFWwindow *window, int focus)
+{
+}
+
+void Application::loop()
+{
+   
 }
