@@ -16,6 +16,10 @@ add_executable(${PROJECT_NAME}
   src/main.cpp
   common/Application.h 
   common/Application.cpp
+  common/Texture.h
+  common/Texture.cpp
+  common/Model.h
+  common/Model.cpp   
   src/MCApplication.h
   src/MCApplication.cpp
 )
@@ -25,7 +29,6 @@ target_compile_options(${PROJECT_NAME} PRIVATE -Wall)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_SOURCE_DIR}/cmake/")
 find_package(OpenGL REQUIRED)
 
-
-set(LIBS glfw3 glew32 OpenGL::GL)
+set(LIBS glfw3 glew32 assimp OpenGL::GL )
 # Define the link libraries
 target_link_libraries(${PROJECT_NAME} PRIVATE ${LIBS})

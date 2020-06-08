@@ -1,11 +1,3 @@
-/**
- * Application.cpp
- * Contributors:
- *      * Xiao Cheng (author)
- * Licence:
- *      * MIT
- */
-
 #pragma once
 
 #include <string>
