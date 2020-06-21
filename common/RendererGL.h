@@ -26,9 +26,10 @@ namespace OpenGLSandbox
             virtual void update();
             virtual void render(const std::string &groupId, const RenderOptions &renderOptions = RenderOptions());
 
-            virtual std::unique_ptr<IVertexInputState> createVertexInputState(const VertexInputStateCreateInfo &desc);
+            virtual std::unique_ptr<IVertexInputAttribute> createVertexInputAttribute(const VertexInputAttributeCreateInfo &desc);
             virtual std::unique_ptr<IBuffer> createBuffer(const BufferCreateInfo &desc);
-            virtual std::unique_ptr<IVertexData> createVertexData(const VertexDataCreateInfo& desc);
+            virtual std::unique_ptr<IVertexInputBinding> createVertexData(const VertexInputBindingCreateInfo &desc);
+            virtual std::unique_ptr<IPipelineVertexInputState *> createPipelineVertexInputState(const PipelineVertexInputStateCreateInfo &desc);
         };
     }; // namespace Common
 };     // namespace OpenGLSandbox

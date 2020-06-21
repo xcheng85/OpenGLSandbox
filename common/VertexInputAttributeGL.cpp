@@ -1,10 +1,10 @@
 #include <assert.h>
-#include "VertexInputStateGL.h"
+#include "VertexInputAttributeGL.h"
 
 using namespace OpenGLSandbox::Common;
 using namespace OpenGLSandbox::Common::GL;
 
-bool VertexInputStateGL::VertexInputAttributeGL::operator==(const VertexInputStateGL::VertexInputAttributeGL &rhs) const
+bool VertexInputAttributeGL::VertexInputAttributeDescriptionGL::operator==(const VertexInputAttributeGL::VertexInputAttributeDescriptionGL &rhs) const
 {
     if (enabled && rhs.enabled)
     {
@@ -16,12 +16,12 @@ bool VertexInputStateGL::VertexInputAttributeGL::operator==(const VertexInputSta
     }
 }
 
-VertexInputStateGL::VertexInputStateGL(const OpenGLSandbox::Common::VertexInputStateCreateInfo &desc)
+VertexInputAttributeGL::VertexInputAttributeGL(const OpenGLSandbox::Common::VertexInputAttributeCreateInfo &desc)
 {
     assert(desc.vertexInputAttributes.size() <= GL_MAX_ATTRIBUTES);
     for (const auto &via : desc.vertexInputAttributes)
     {
-        auto &viaGL = vertexInputAttributes_[via.bindingIndex];
+        auto &viaGL = vertexInputAttributeDescriptions_[via.bindingIndex];
 
         viaGL.enabled = true;
         viaGL.streamId = via.streamId;
@@ -33,17 +33,17 @@ VertexInputStateGL::VertexInputStateGL(const OpenGLSandbox::Common::VertexInputS
     }
 }
 
-std::unique_ptr<VertexInputStateGL>
-VertexInputStateGL::create(const OpenGLSandbox::Common::VertexInputStateCreateInfo &desc)
+std::unique_ptr<VertexInputAttributeGL>
+VertexInputAttributeGL::create(const OpenGLSandbox::Common::VertexInputAttributeCreateInfo &desc)
 {
-    return std::make_unique<VertexInputStateGL>(desc);
+    return std::make_unique<VertexInputAttributeGL>(desc);
 }
 
-size_t VertexInputStateGL::getSizeInByte(unsigned int vertexAttributeBindingIndex)
+size_t VertexInputAttributeGL::getSizeInByte(unsigned int vertexAttributeBindingIndex)
 {
     assert(vertexAttributeBindingIndex < GL_MAX_ATTRIBUTES);
     size_t size = 0;
-    auto &via = vertexInputAttributes_[vertexAttributeBindingIndex];
+    auto &via = vertexInputAttributeDescriptions_[vertexAttributeBindingIndex];
     if (via.enabled)
     {
         size += getSizeOf(via.dataType) * via.numComponents;

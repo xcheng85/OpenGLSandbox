@@ -31,12 +31,14 @@ add_library(${PROJECT_NAME}
   Renderer.h 
   RendererGL.h 
   RendererGL.cpp 
-  VertexInputStateGL.h 
-  VertexInputStateGL.cpp 
+  VertexInputAttributeGL.h 
+  VertexInputAttributeGL.cpp 
   BufferGL.h
   BufferGL.cpp
-  VertexDataGL.h 
-  VertexDataGL.cpp
+  VertexInputBindingGL.h 
+  VertexInputBindingGL.cpp
+  PipelineVertexInputStateGL.h
+  PipelineVertexInputStateGL.cpp
 )
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)

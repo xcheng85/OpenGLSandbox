@@ -13,13 +13,13 @@ namespace OpenGLSandbox
     {
         namespace GL
         {
-            class VertexDataGL : public IVertexData
+            class VertexInputBindingGL : public IVertexInputBinding
             {
             public:
-                VertexDataGL(const VertexDataCreateInfo &desc);
-                virtual ~VertexDataGL();
+                VertexInputBindingGL(const VertexInputBindingCreateInfo &desc);
+                virtual ~VertexInputBindingGL();
                 // nothing needed now
-                static std::unique_ptr<IVertexData> create(const VertexDataCreateInfo &desc);
+                static std::unique_ptr<IVertexInputBinding> create(const VertexInputBindingCreateInfo &desc);
 
             private:
                 OpenGLSandbox::Common::GL::BufferGL *buffer_[GL_MAX_ATTRIBUTES];

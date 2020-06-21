@@ -2,9 +2,9 @@
 #include <assert.h>
 
 #include "RendererGL.h"
-#include "VertexInputStateGL.h"
+#include "VertexInputAttributeGL.h"
 #include "BufferGL.h"
-#include "VertexDataGL.h"
+#include "VertexInputBindingGL.h"
 
 using namespace OpenGLSandbox::Common;
 using namespace OpenGLSandbox::Common::GL;
@@ -21,9 +21,9 @@ void RendererGL::render(const std::string &groupId, const RenderOptions &renderO
 {
 }
 
-std::unique_ptr<IVertexInputState> RendererGL::createVertexInputState(const VertexInputStateCreateInfo &desc)
+std::unique_ptr<IVertexInputAttribute> RendererGL::createVertexInputAttribute(const VertexInputAttributeCreateInfo &desc)
 {
-    return VertexInputStateGL::create(desc);
+    return VertexInputAttributeGL::create(desc);
 }
 
 std::unique_ptr<IBuffer> RendererGL::createBuffer(const BufferCreateInfo &desc)
@@ -31,7 +31,12 @@ std::unique_ptr<IBuffer> RendererGL::createBuffer(const BufferCreateInfo &desc)
     return BufferGL::create(desc);
 }
 
-std::unique_ptr<IVertexData> RendererGL::createVertexData(const VertexDataCreateInfo& desc)
+std::unique_ptr<IVertexInputBinding> RendererGL::createVertexData(const VertexInputBindingCreateInfo &desc)
 {
-    return VertexDataGL::create(desc);
+    return VertexInputBindingGL::create(desc);
+}
+
+std::unique_ptr<IPipelineVertexInputState *> RendererGL::createPipelineVertexInputState(const PipelineVertexInputStateCreateInfo &desc)
+{
+    
 }

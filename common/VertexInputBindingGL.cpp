@@ -1,11 +1,11 @@
 #include <assert.h>
 
-#include <VertexDataGL.h>
+#include <VertexInputBindingGL.h>
 
 using namespace OpenGLSandbox::Common;
 using namespace OpenGLSandbox::Common::GL;
 
-VertexDataGL::VertexDataGL(const VertexDataCreateInfo &desc)
+VertexInputBindingGL::VertexInputBindingGL(const VertexInputBindingCreateInfo &desc)
 {
     numVertices_ = desc.numVertices;
 
@@ -22,11 +22,11 @@ VertexDataGL::VertexDataGL(const VertexDataCreateInfo &desc)
     }
 }
 
-VertexDataGL::~VertexDataGL()
+VertexInputBindingGL::~VertexInputBindingGL()
 {
 }
 
-std::unique_ptr<IVertexData> VertexDataGL::create(const VertexDataCreateInfo &desc)
+std::unique_ptr<IVertexInputBinding> VertexInputBindingGL::create(const VertexInputBindingCreateInfo &desc)
 {
-    return std::make_unique<VertexDataGL>(desc);
+    return std::make_unique<VertexInputBindingGL>(desc);
 }
