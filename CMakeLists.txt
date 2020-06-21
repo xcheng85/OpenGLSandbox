@@ -6,4 +6,6 @@ set(PROJECT_ROOT "${PROJECT_SOURCE_DIR}")
 
 add_subdirectory(common)
 
+add_subdirectory(glWrapper)
+
 add_subdirectory(applications)

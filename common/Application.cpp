@@ -25,6 +25,10 @@ Application::Application(unsigned int width, unsigned int height, std::string ti
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_DEBUG_CONTEXT, GL_TRUE);
+    glfwWindowHint(GLFW_CONTEXT_ROBUSTNESS, GLFW_LOSE_CONTEXT_ON_RESET);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
 
     // create the window
     window_ = glfwCreateWindow(width, height, title.c_str(), NULL, NULL);
@@ -37,6 +41,9 @@ Application::Application(unsigned int width, unsigned int height, std::string ti
     glfwSetKeyCallback(window_, key_callback);
     glfwSetWindowSizeCallback(window_, resize_callback);
     glfwSetWindowFocusCallback(window_, focus_callback);
+    //glfwSetMouseButtonCallback(window_, GLFWwindowMouseButtonPress);
+    //glfwSetScrollCallback(mWindow, GLFWwindowMouseWheel);
+   // glfwSetCursorPosCallback(mWindow, GLFWwindowMouseMove);
 
     glfwMakeContextCurrent(window_);
 
@@ -92,7 +99,15 @@ void Application::focus_callback(GLFWwindow *window, int focus)
 {
 }
 
+void Application::mouseButton_callback(GLFWwindow *window, int button, int action, int mods)
+{
+
+}
+
+void Application::mouseMove_callback(GLFWwindow *window, double xoffset, double yoffset){
+
+}
+
 void Application::loop()
 {
-   
 }

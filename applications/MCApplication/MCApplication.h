@@ -14,4 +14,5 @@ protected:
     virtual void loop();
 
 private:
+    void loadShaders();
 };

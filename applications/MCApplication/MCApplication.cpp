@@ -14,4 +14,10 @@ MCApplication::MCApplication(unsigned int width, unsigned int height, std::strin
 
 void MCApplication::loop()
 {
+
+}
+
+void MCApplication::loadShaders()
+{
+    
 }

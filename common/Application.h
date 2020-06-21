@@ -23,6 +23,9 @@ namespace OpenGLSandbox
             static void key_callback(GLFWwindow *window, int key, int scancode, int action, int mods);
             static void resize_callback(GLFWwindow *window, int newWidth, int newHeight);
             static void focus_callback(GLFWwindow *window, int focus);
+            static void mouseButton_callback(GLFWwindow* window, int button, int action, int mods);
+            static void mouseMove_callback(GLFWwindow* window, double xoffset, double yoffset);
+
 
             virtual void loop() = 0;
 
@@ -31,8 +34,11 @@ namespace OpenGLSandbox
             unsigned int height_;
             std::string title_;
 
-            float time;
-            float deltaTime;
+            // gl version
+            unsigned int majorVersion_;
+            unsigned int minVersion_;
+
+
         };
     } // namespace Common
 } // namespace OpenGLSandbox
