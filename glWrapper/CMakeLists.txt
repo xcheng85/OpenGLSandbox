@@ -9,6 +9,7 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 include_directories(
     "${PROJECT_ROOT}/dependencies/include"
     "${PROJECT_ROOT}"
+    "${PROJECT_ROOT}/glWrapper"
 )
 
 message("project root: " ${PROJECT_ROOT})
@@ -22,6 +23,13 @@ add_library(${PROJECT_NAME}
   ObjectGL.cpp 
   BufferGL.h
   BufferGL.cpp
+  TextureGL.h 
+  TextureGL.cpp
+  ITextureGLFunction.h
+  TextureGLFunctionBind.h 
+  TextureGLFunctionBind.cpp
+  TextureGLFunctionDSA.h
+  TextureGLFunctionDSA.cpp
 )
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)

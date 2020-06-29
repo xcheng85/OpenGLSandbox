@@ -10,10 +10,10 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 include_directories(
     "${PROJECT_ROOT}/dependencies/include"
     "${PROJECT_ROOT}/common"
-    "${PROJECT_ROOT}"
+    "${PROJECT_ROOT}/glWrapper"
 )
 
-message("project root: " ${PROJECT_ROOT})
+message("project root FFFF: " ${PROJECT_ROOT})
 
 # Add .lib files
 link_directories("${PROJECT_ROOT}/dependencies/lib")
@@ -39,6 +39,10 @@ add_library(${PROJECT_NAME}
   VertexInputBindingGL.cpp
   PipelineVertexInputStateGL.h
   PipelineVertexInputStateGL.cpp
+  IndexBufferGL.h 
+  IndexBufferGL.cpp
+  TextureGL.h 
+  TextureGL.cpp 
 )
 
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 17)

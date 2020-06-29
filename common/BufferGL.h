@@ -3,9 +3,18 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "Common.h"
-#include "CommonGL.h"
-#include <glWrapper/BufferGL.h>
+#include <Common.h>
+#include <CommonGL.h>
+
+
+namespace OpenGLSandbox
+{
+    namespace GLWrapper
+    {
+        class BufferGL;
+    }
+}
+
 
 namespace OpenGLSandbox
 {

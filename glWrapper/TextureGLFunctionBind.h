@@ -5,7 +5,7 @@
 #include <vector>
 #include <memory>
 #include <GL/glew.h>
-#include <ITextureGLFunction.h>
+#include <glWrapper/ITextureGLFunction.h>
 
 namespace OpenGLSandbox
 {

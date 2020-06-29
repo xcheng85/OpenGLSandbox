@@ -3,9 +3,9 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "Common.h"
-#include "CommonGL.h"
-#include "BufferGL.h"
+#include <Common.h>
+#include <CommonGL.h>
+#include <BufferGL.h>
 
 namespace OpenGLSandbox
 {

@@ -22,8 +22,10 @@ namespace OpenGLSandbox
             {
                 PersistentBuffer
             };
-            static std::unique_ptr<BufferGL> create(ModeCore, GLenum usage, GLenum defaultTarget = GL_UNIFORM_BUFFER);
-            static std::unique_ptr<BufferGL> create(ModePersistentBuffer, GLbitfield modeBits);
+            // a single buffer could be referenced multiple times
+            static std::shared_ptr<BufferGL> create(ModeCore, GLenum usage, GLenum defaultTarget = GL_UNIFORM_BUFFER);
+            static std::shared_ptr<BufferGL> create(ModePersistentBuffer, GLbitfield modeBits);
+
             virtual ~BufferGL();
 
             virtual void update(void const *dataSrc, size_t offset, size_t length){

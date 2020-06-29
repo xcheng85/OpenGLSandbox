@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "PipelineVertexInputStateGL.h"
+#include <PipelineVertexInputStateGL.h>
 
 using namespace OpenGLSandbox::Common;
 using namespace OpenGLSandbox::Common::GL;

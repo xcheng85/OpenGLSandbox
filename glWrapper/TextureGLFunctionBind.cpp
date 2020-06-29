@@ -144,7 +144,7 @@ void TextureGLFunctionBind::setImage1D(GLuint texture, GLenum target, GLint leve
     TextureBinding tb(target, texture);
     //http://www.songho.ca/opengl/gl_pbo.html
     glBindBuffer(GL_PIXEL_UNPACK_BUFFER, 0); // make sure, GL_PIXEL_UNPACK_BUFFER is unbound !
-    glTexImage1D(target, level, internalFormat, width, 0, format, type, pixels);
+    glTexImage1D(target, level, internalFormat, width, border, format, type, pixels);
 }
 
 void TextureGLFunctionBind::setImage2D(GLuint texture, GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, GLvoid const *pixels)

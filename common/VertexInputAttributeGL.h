@@ -3,8 +3,8 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "Common.h"
-#include "CommonGL.h"
+#include <Common.h>
+#include <CommonGL.h>
 
 namespace OpenGLSandbox
 {

@@ -176,7 +176,210 @@ namespace OpenGLSandbox
 
         class IPipelineVertexInputState
         {
-            
+        public:
+            virtual ~IPipelineVertexInputState(){};
+        };
+
+        struct IndexBufferCreateInfo
+        {
+            IBuffer *buffer;
+            size_t offset;
+            size_t count;
+            DataType indexType; // uint16, uint32
+        };
+
+        class IIndexBuffer
+        {
+        public:
+            virtual ~IIndexBuffer(){};
+        };
+
+        enum class InternalTextureFormat
+        {
+            R8,
+            R16,
+            RG8,
+            RG16,
+            RGB8,
+            RGB16,
+            RGBA8,
+            RGBA16,
+            R16F,
+            RG16F,
+            RGB16F,
+            RGBA16F,
+            R32F,
+            RG32F,
+            RGB32F,
+            RGBA32F,
+            R8I,
+            R8UI,
+            R16I,
+            R16UI,
+            R32I,
+            R32UI,
+            RG8I,
+            RG8UI,
+            RG16I,
+            RG16UI,
+            RG32I,
+            RG32UI,
+            RGB8I,
+            RGB8UI,
+            RGB16I,
+            RGB16UI,
+            RGB32I,
+            RGB32UI,
+            RGBA8I,
+            RGBA8UI,
+            RGBA16I,
+            RGBA16UI,
+            RGBA32I,
+            RGBA32UI,
+            COMPRESSED_R,
+            COMPRESSED_RG,
+            COMPRESSED_RGB,
+            COMPRESSED_RGBA,
+            COMPRESSED_SRGB,
+            COMPRESSED_SRGB_ALPHA,
+            ALPHA,
+            LUMINANCE,
+            LUMINANCE_ALPHA,
+            RGB,
+            RGBA,
+            NATIVE,
+            NUM_INTERNALTEXTUREFORMATS
+        };
+
+        // for cube maps, either use a native data type
+        // or pass in the faces via TextureDataPtr
+        // with 6 layers: +x,-x,+y,-y,+z,-z
+        enum class TextureType
+        {
+            _1D,
+            _1D_ARRAY,
+            _2D,
+            _2D_ARRAY,
+            _3D,
+            BUFFER,
+            CUBEMAP,
+            //CUBEMAP_ARRAY,
+            NATIVE,
+            NUM_TEXTURETYPES
+        };
+
+        enum class TextureDataType
+        {
+            POINTER,
+            BUFFER,
+            NATIVE, // shared resource coming from glWrapper
+            NUM_TEXTUREDATATYPES
+        };
+
+        enum class PixelFormat
+        {
+            R,
+            RG,
+            RGB,
+            RGBA,
+            BGR,
+            BGRA,
+            LUMINANCE,
+            ALPHA,
+            LUMINANCE_ALPHA,
+            DEPTH_COMPONENT,
+            DEPTH_STENCIL,
+            STENCIL_INDEX,
+            NATIVE,
+            NUM_PIXELFORMATS,
+            UNKNOWN
+        };
+
+        struct TextureCreateInfo
+        {
+            virtual ~TextureCreateInfo(){};
+
+            TextureType type;
+            InternalTextureFormat internalFormat;
+            PixelFormat pixelFormat;
+            DataType dataType;
+            size_t width;
+            size_t height;
+            size_t depth;
+            size_t numLayers;
+            bool useMipmaps;
+        };
+
+        class TextureData
+        {
+        public:
+            TextureData(TextureDataType type);
+            virtual ~TextureData();
+
+            TextureDataType getTextureDataType() const { return type; }
+
+        private:
+            TextureDataType type;
+        };
+
+        class TextureDataBuffer : public TextureData
+        {
+        public:
+            TextureDataBuffer(const std::shared_ptr<IBuffer> &buffer);
+
+        private:
+            std::shared_ptr<IBuffer> buffer_;
+        };
+
+        class TextureDataPtr : public TextureData
+        {
+        public:
+            // real data
+            TextureDataPtr(const void *data, PixelFormat pixelFormat, DataType pixelDataType);
+            // 2d : mipmap0...n
+            TextureDataPtr(const void *const *data, unsigned int numMipMapLevels, PixelFormat pixelFormat, DataType pixelDataType);
+            // 2d : lay0: mimap0...n lay1: mimap0...n
+            TextureDataPtr(const void *const *data, unsigned int numMipMapLevels, unsigned int numLayers, PixelFormat pixelFormat, DataType pixelDataType);
+
+            inline auto getPixelFormat() const
+            {
+                return pixelFormat_;
+            }
+
+            inline auto getDataType() const
+            {
+                return dataType_;
+            }
+
+            inline auto getNumMipMapLevels() const
+            {
+                return numMipMapLevels_;
+            }
+
+            inline auto getNumLayers() const
+            {
+                return numLayers_;
+            }
+            // return raw ptr, could read/write
+            auto getDataPtr() const
+            {
+                return pData_;
+            };
+
+        private:
+            //
+            //const void *pData_; // could be hetregenous vector to some pointer, float array
+            void const *const *pData_; // vector of vector, 1darray, cubemap // array of pointer
+            unsigned int numLayers_;
+            unsigned int numMipMapLevels_;
+            PixelFormat pixelFormat_;
+            DataType dataType_;
+        };
+
+        class ITexture
+        {
+        public:
+            virtual ~ITexture(){};
         };
     }; // namespace Common
 };     // namespace OpenGLSandbox

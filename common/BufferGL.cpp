@@ -1,6 +1,7 @@
 #include <assert.h>
 
 #include <BufferGL.h>
+#include <glWrapper/BufferGL.h>
 
 using namespace OpenGLSandbox::Common;
 using namespace OpenGLSandbox::Common::GL;

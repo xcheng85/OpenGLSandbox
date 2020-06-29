@@ -224,19 +224,12 @@ namespace OpenGLSandbox
 
             // VkPipelineVertexInputStateCreateInfo
             // binding buffers, and binding vertexattributes how to read the buffer so that vertex shader can understand
-            virtual std::unique_ptr<IPipelineVertexInputState *> createPipelineVertexInputState(const PipelineVertexInputStateCreateInfo &desc) = 0;
+            virtual std::unique_ptr<IPipelineVertexInputState> createPipelineVertexInputState(const PipelineVertexInputStateCreateInfo &desc) = 0;
 
+            virtual std::unique_ptr<IIndexBuffer> createIndexBuffer(const IndexBufferCreateInfo &desc) = 0;
+            virtual std::unique_ptr<ITexture *> createTexture(const TextureCreateInfo &desc) = 0;
             /*
-            // or unique_ptr ?
-            virtual std::unique_ptr<IVertexAttribute *> createVertexAttribute(IVertexFormat *format, IVertexData *data) = 0;
 
-            // buffer
-            virtual std::unique_ptr<IBuffer *> createBuffer(const IBufferDesc &desc) = 0;
-
-            virtual std::unique_ptr<IIndices *> createIndices() = 0;
-
-            // texture
-            virtual std::unique_ptr<ITexture *> createTexture(const ITextureDesc &desc) = 0;
 
             // sampler state
             virtual std::unique_ptr<ISamplerState *> createSamplerState(const ISamplerStateDesc &desc) = 0;

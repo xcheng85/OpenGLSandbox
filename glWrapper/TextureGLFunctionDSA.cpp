@@ -72,6 +72,7 @@ void TextureGLFunctionDSA::setImage1D(GLuint texture, GLenum target, GLint level
     glPushClientAttribDefaultEXT(GL_CLIENT_PIXEL_STORE_BIT);
     glTextureImage1DEXT(texture, target, level, internalFormat, width, 0, format, type, pixels);
     glPopClientAttrib();
+    //glTextureStorage1D(texture, level, internalFormat, width);
 }
 
 void TextureGLFunctionDSA::setImage2D(GLuint texture, GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, GLvoid const *pixels)
@@ -79,6 +80,7 @@ void TextureGLFunctionDSA::setImage2D(GLuint texture, GLenum target, GLint level
     glPushClientAttribDefaultEXT(GL_CLIENT_PIXEL_STORE_BIT);
     glTextureImage2DEXT(texture, target, level, internalFormat, width, height, 0, format, type, pixels);
     glPopClientAttrib();
+    //glTextureStorage2D(texture, level, internalFormat, width, height);
 }
 
 void TextureGLFunctionDSA::setImage3D(GLuint texture, GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, GLvoid const *pixels)
@@ -86,6 +88,7 @@ void TextureGLFunctionDSA::setImage3D(GLuint texture, GLenum target, GLint level
     glPushClientAttribDefaultEXT(GL_CLIENT_PIXEL_STORE_BIT);
     glTextureImage3DEXT(texture, target, level, internalFormat, width, height, depth, 0, format, type, pixels);
     glPopClientAttrib();
+    //glTextureStorage3D(texture, numlevels, internalFormat, width, height, depth);
 }
 
 void TextureGLFunctionDSA::setLODParameters(GLuint texture, GLenum target, float minLOD, float maxLOD, float LODBias)
@@ -122,17 +125,17 @@ void TextureGLFunctionDSA::setParameter(GLuint texture, GLenum target, GLenum pn
 
 void TextureGLFunctionDSA::setSubImage1D(GLuint texture, GLenum target, GLint level, GLint xOffset, GLsizei width, GLenum format, GLenum type, GLvoid const *pixels)
 {
-    glTextureSubImage1DEXT(texture, target, level, xOffset, width, format, type, pixels);
+    glTextureSubImage1D(texture, level, xOffset, width, format, type, pixels);
 }
 
 void TextureGLFunctionDSA::setSubImage2D(GLuint texture, GLenum target, GLint level, GLint xOffset, GLint yOffset, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid const *pixels)
 {
-    glTextureSubImage2DEXT(texture, target, level, xOffset, yOffset, width, height, format, type, pixels);
+    glTextureSubImage2D(texture, level, xOffset, yOffset, width, height, format, type, pixels);
 }
 
 void TextureGLFunctionDSA::setSubImage3D(GLuint texture, GLenum target, GLint level, GLint xOffset, GLint yOffset, GLint zOffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLvoid const *pixels)
 {
-    glTextureSubImage3DEXT(texture, target, level, xOffset, yOffset, zOffset, width, height, depth, format, type, pixels);
+    glTextureSubImage3D(texture, level, xOffset, yOffset, zOffset, width, height, depth, format, type, pixels);
 }
 
 void TextureGLFunctionDSA::setWrapParameters(GLuint texture, GLenum target, GLenum wrapS, GLenum wrapT, GLenum wrapR)

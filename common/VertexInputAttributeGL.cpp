@@ -1,5 +1,5 @@
 #include <assert.h>
-#include "VertexInputAttributeGL.h"
+#include <VertexInputAttributeGL.h>
 
 using namespace OpenGLSandbox::Common;
 using namespace OpenGLSandbox::Common::GL;

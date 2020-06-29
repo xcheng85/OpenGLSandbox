@@ -3,10 +3,10 @@
 #include <string>
 #include <vector>
 #include <memory>
-#include "Common.h"
-#include "CommonGL.h"
-#include "VertexInputBindingGL.h"
-#include "VertexInputAttributeGL.h"
+#include <Common.h>
+#include <CommonGL.h>
+#include <VertexInputBindingGL.h>
+#include <VertexInputAttributeGL.h>
 
 namespace OpenGLSandbox
 {

@@ -471,30 +471,30 @@ BufferGL::~BufferGL()
 {
 }
 
-std::unique_ptr<BufferGL> BufferGL::create(ModeCore, GLenum mode, GLenum defaultTarget)
+std::shared_ptr<BufferGL> BufferGL::create(ModeCore, GLenum mode, GLenum defaultTarget)
 {
 #if defined(GL_VERSION_4_5)
     if (GLEW_VERSION_4_5)
     {
-        return std::make_unique<BufferGLCoreDSA>(mode);
+        return std::shared_ptr<BufferGLCoreDSA>(new BufferGLCoreDSA(mode));
     }
     else
     {
-        return std::make_unique<BufferGLCore>(mode, defaultTarget);
+        return std::shared_ptr<BufferGLCore>(new BufferGLCore(mode, defaultTarget));
     }
 #else
-    return std::make_unique<BufferGLCore>(mode, defaultTarget);
+    return std::shared_ptr<BufferGLCore>(new BufferGLCore(mode, defaultTarget));
 #endif
 }
 
-std::unique_ptr<BufferGL> BufferGL::create(ModePersistentBuffer, GLbitfield modeBits)
+std::shared_ptr<BufferGL> BufferGL::create(ModePersistentBuffer, GLbitfield modeBits)
 {
 #if defined(GL_VERSION_4_5)
     if (!GLEW_ARB_buffer_storage)
     {
         throw std::runtime_error("ARB_buffer_storage not available");
     }
-    return std::make_unique<BufferGLPersistentDSA>(modeBits);
+    return std::shared_ptr<BufferGLPersistentDSA>(new BufferGLPersistentDSA(modeBits));
 #else
     throw std::runtime_error("GL 4.5 support not enabled");
 #endif
